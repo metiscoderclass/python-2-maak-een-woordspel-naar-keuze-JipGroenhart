@@ -1,0 +1,212 @@
+import random
+wrong_counter = 0
+
+def vraag_letter():
+	global guess
+
+	guess = str(input("geef een letter of typ ? om het woord te raden: "))
+
+def vraag_woord():
+	global woord_guess
+
+	woord_guess = input("raad het woord: ")
+
+def galgje():
+
+
+	if wrong_counter == 1:
+		print("")
+		print("")
+		print("")
+		print("")
+		print("")
+		print("")
+		print("")
+		print("")
+		print("_____________")
+		print("je hebt dit allemaal al geraden: " + al_geweest)
+
+	elif wrong_counter == 2:
+		print("")
+		print("|")
+		print("|")
+		print("|")
+		print("|")
+		print("|")
+		print("|")
+		print("|")
+		print("| \\")
+		print("_____________")
+		print("je hebt dit allemaal al geraden: " + al_geweest)
+
+	elif wrong_counter == 3:
+		print("")
+		print("_____________")
+		print("| /")
+		print("|")
+		print("|")
+		print("|")
+		print("|")
+		print("|")
+		print("|")
+		print("| \\")
+		print("_____________")
+		print("je hebt dit allemaal al geraden: " + al_geweest)
+	elif wrong_counter == 4:
+		print("")
+		print("_____________")
+		print("| /         |")
+		print("|           |")
+		print("|")
+		print("|")
+		print("|")
+		print("|")
+		print("|")
+		print("| \\")
+		print("_____________")
+		print("je hebt dit allemaal al geraden: " + al_geweest)
+	elif wrong_counter == 5:
+		print("")
+		print("_____________")
+		print("| /         |")
+		print("|           |")
+		print("|         (X-X) <-- repl process")
+		print("|        --[]--")
+		print("|          /\\")
+		print("|")
+		print("|")
+		print("| \\")
+		print("_____________")
+		print("het woord was: " + str(geheim))
+		print("snap je, want repl process is hier onder doodgegaan maar dat heb ik dan ook in galg gedaan")
+		quit()
+
+
+geheim_woord_lijst = ["banaan", "schoen", "eend", "aardappel", "boor", "boom", "uwu", "hamer", "aap", "muur", "dood", "chongyun", "meer", "kikker", "voertuig", "lus", 'nee', 'been', 'kaars', "garage", "zalm", "weg", "poes", "albanie", "communist", "zwak", "stoel", "tas", "veel", "rood", "noot", "arm", "boomstam", "moord", "katsy", "autodeur", "kipsatee"]
+geheim = random.choice(geheim_woord_lijst)
+
+streeps = []
+
+letturlijst = "abcdefghijklmnopqrstuvwxyz?"
+
+
+str(letturlijst)
+
+str(geheim)
+
+
+str(wrong_counter)
+
+print("welkom bij")
+print()
+print("  ___    __    __    ___   ____  ____  ")
+print(" / __)  /__\\  (  )  / __) (_  _)( ___)")
+print("( (_-. /(__)\\  )(__( (_-..-_)(   )__) ")
+print(" \\___/(__)(__)(____)\\___/\\____) (____)")
+
+print()
+print()
+naam = input("geef een naam: ")
+
+
+for letter in geheim:
+	streeps.append('-')
+
+global al_geweest
+al_geweest = ""
+woord_guess = False
+guess = False
+
+str(guess)
+str(woord_guess)
+
+while not woord_guess == geheim:
+
+	keer = -1
+	print(*streeps)
+
+	vraag_letter()
+
+
+	if guess in geheim:
+
+		str(guess)
+		aantal_letters = len(guess)
+
+
+		if aantal_letters != 1:
+			print("als je het woord wil raden zou ik eerst \"?\" antwoorden :)")
+		
+			str(guess)
+
+		elif not guess in letturlijst:
+			print("Hé " + naam + ", leer lezen")
+
+		elif guess in al_geweest:
+			print("je hebt deze letter al geraden")
+		
+		else:
+			print("cool")
+			for letter in geheim:
+				keer += 1
+				if letter == guess:
+					streeps[keer] = guess
+			if al_geweest == "":
+				al_geweest = al_geweest + guess
+			else:
+				al_geweest = al_geweest + ", " + guess
+
+		print("je hebt dit allemaal al geraden: " + al_geweest)
+
+	elif guess == "?":
+		print("dus jij wil wel het woord raden hè?")
+		vraag_woord()
+
+		if not woord_guess == geheim:
+		
+
+			if woord_guess in al_geweest:
+				print("je hebt dit woord al geraden")
+		
+			else:
+				wrong_counter += 1
+				galgje()
+
+	elif guess not in geheim:
+		str(guess)
+		aantal_letters = len(guess)
+
+		if aantal_letters != 1:
+			print("als je het woord wil raden zou ik eerst \"?\" antwoorden :)")
+
+			print("je hebt dit allemaal al geraden: " + al_geweest)
+		
+			str(guess)
+
+		elif not guess in letturlijst:
+			print("Hé " + naam + ", leer lezen")
+
+		elif guess in al_geweest:
+			print("je hebt deze letter al geraden")
+			
+			print("je hebt dit allemaal al geraden: " + al_geweest)
+		
+		else:
+			wrong_counter += 1
+			if al_geweest == "":
+				al_geweest = al_geweest + guess
+			else:
+				al_geweest = al_geweest + ", " + guess
+			galgje()
+
+str(guess)
+
+
+print("___    ____    ___   ____   _____  ____")
+print("\\  \\  /    \\  /  /   |  |   |    \\ |  |")
+print(" \\  \\/  /\\  \\/  /    |  |   |  |\\ \\|  |")
+print("  \\    /  \\    /     |  |   |  | \\    |")
+print("   ----    ----      ----   ----  -----")
+print("")
+print("")
+print("je hebt zo veel keer fout geraden: " + str(wrong_counter))
